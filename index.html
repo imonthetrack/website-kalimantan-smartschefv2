@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kalimantan SmartChef AI</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <!-- TensorFlow + Teachable Machine -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ══════════════ NAVBAR ══════════════ -->
+  <nav class="navbar">
+    <a href="#" class="nav-brand">
+      <div class="nav-logo-mark">
+        <i data-lucide="chef-hat" style="width:18px;height:18px"></i>
+      </div>
+      <span class="nav-title">SmartChef <span>AI</span></span>
+    </a>
+    <div class="status-pill">
+      <span class="status-dot"></span>
+      AI Online
+    </div>
+  </nav>
+
+  <!-- ══════════════ MAIN PAGE ══════════════ -->
+  <main class="page">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-eyebrow">
+        <i data-lucide="map-pin" style="width:11px;height:11px"></i>
+        Kalimantan Food Scanner
+      </div>
+      <h1>Kenali Masakan<br><em>Tradisional</em> Kalimantan</h1>
+      <p class="hero-sub">
+        Arahkan kamera atau unggah foto bahan ikonik. AI kami akan mengidentifikasi
+        bahan dan menyajikan resep lengkapnya secara instan.
+      </p>
+    </header>
+
+    <!-- SCANNER LAYOUT -->
+    <div class="scanner-layout">
+      <!-- kiri -->
+      <div class="card prediction-card">
+          <div class="card-header">
+            <span class="card-label">
+              <i data-lucide="bar-chart-2" style="width:13px;height:13px"></i>
+              Probabilitas
+            </span>
+          </div>
+          <div class="pred-list-wrap">
+            <!-- ID tidak boleh diubah -->
+            <div id="predictionList"></div>
+          </div>
+        </div>
+
+      <!-- ── tengah: Scanner card ── -->
+      <div class="card scanner-card">
+        <div class="card-header">
+          <span class="card-label">
+            <i data-lucide="scan" style="width:13px;height:13px"></i>
+            Live Scanner
+          </span>
+        </div>
+
+        <!-- Viewport kamera -->
+        <div class="camera-container" id="cameraContainer">
+          <div class="scan-line"></div>
+          <div class="corner-tl"></div>
+          <div class="corner-tr"></div>
+          <div class="corner-bl"></div>
+          <div class="corner-br"></div>
+
+          <!-- Loading overlay -->
+          <div class="loading-overlay" id="loadingOverlay">
+            <div class="spinner"></div>
+            <p>Memuat model AI…</p>
+          </div>
+
+          <!-- Idle placeholder -->
+          <div class="camera-idle" id="cameraIdle">
+            <div class="camera-idle-icon">
+              <i data-lucide="camera" style="width:26px;height:26px"></i>
+            </div>
+            <p>Klik <strong>Start Kamera</strong> atau unggah gambar untuk mulai</p>
+          </div>
+
+          <!-- Media elements — ID tidak boleh diubah -->
+          <video id="camera" autoplay playsinline></video>
+          <img id="uploadPreview" alt="Preview" />
+        </div>
+
+        <!-- Tombol kontrol — ID tidak boleh diubah -->
+        <div class="scanner-controls">
+          <button class="btn btn-primary" id="startBtn">
+            <i data-lucide="camera" style="width:15px;height:15px"></i>
+            Start Kamera
+          </button>
+          <button class="btn btn-outline" id="freezeBtn" disabled>
+            <i data-lucide="pause" style="width:15px;height:15px"></i>
+            Freeze
+          </button>
+          <button class="btn btn-outline" id="uploadBtn">
+            <i data-lucide="upload" style="width:15px;height:15px"></i>
+            Upload
+          </button>
+          <button class="btn btn-ghost" id="uploadResumeBtn" disabled>
+            <i data-lucide="play" style="width:15px;height:15px"></i>
+            Resume
+          </button>
+        </div>
+
+        <!-- Hidden file input — ID tidak boleh diubah -->
+        <input type="file" id="imageUpload" accept="image/*" />
+      </div>
+
+      <!-- ── KANAN: Result + Prediction stack ── -->
+      
+        <!-- Kartu hasil identifikasi — menuBox ID tidak boleh diubah -->
+        <div class="card result-card" id="menuBox">
+          <div class="card-header">
+            <span class="card-label">
+              Hasil Identifikasi
+            </span>
+          </div>
+
+          <!-- Food image — ID tidak boleh diubah -->
+          <div class="food-image-wrapper">
+            <div class="food-img-placeholder" id="foodImgPlaceholder">
+              <i data-lucide="image" style="width:32px;height:32px"></i>
+              <span>Belum ada gambar</span>
+            </div>
+            <img id="foodImage" src="" alt="Food Result" />
+          </div>
+
+          <div class="result-body">
+            <button class="btn btn-outline" id="bahanBtn">
+              <i data-lucide="list" style="width:15px;height:15px"></i>
+              Lihat Bahan Ikonik
+            </button>
+            <div id="bahanList" style="margin-top:10px; font-size:0.8rem;"></div>
+            <!-- Status AI — ID tidak boleh diubah -->
+            <div class="ai-status">
+              <div class="ai-dot"></div>
+              <span id="aiStatusText">Menunggu input</span>
+            </div>
+
+            <!-- Hasil teks resep — ID tidak boleh diubah -->
+            <div id="resultText">
+              Arahkan kamera ke makanan atau unggah gambar untuk memulai identifikasi.
+            </div>
+
+            <!-- Confidence bar — ID tidak boleh diubah -->
+            <div class="confidence-container">
+              <div class="confidence-label">
+                <span>Confidence Score</span>
+                <span id="confidenceText">0%</span>
+              </div>
+              <div class="confidence-bar">
+                <div class="confidence-fill" id="confidenceFill" style="width:0%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div> <!-- scanner-layout -->
+
+        <!-- Kartu probabilitas -->
+  </main>
+
+  <!-- Audio — ID tidak boleh diubah -->
+  <audio id="bgMusic" autoplay loop>
+    <source src="musik.mpeg" type="audio/mpeg" />
+  </audio>
+
+  <!-- Tombol musik — ID tidak boleh diubah -->
+  <button id="musicBtn">🔊</button>
+
+  <footer class="footer">
+    © 2026 &nbsp;·&nbsp; Kalimantan SmartChef AI &nbsp;·&nbsp; Proyek AI Kuliner Nusantara
+  </footer>
+
+  <!-- Init Lucide icons -->
+  <script>lucide.createIcons();</script>
+
+  <!-- App script -->
+  <script src="script.js"></script>
+
+</body>
+</html>

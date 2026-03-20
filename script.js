@@ -65,7 +65,7 @@ const allClasses = [
 const menuData = {
 
   "gangan humbut": {
-    img: "images/gangan_humbut2.jpeg",
+    img: "images/gangan-humbut.jpg",
     text: `
       <h2>Gangan Humbut</h2>
       <p class="desc">Masakan tradisional satu ini terkenal dengan kuah kuning segar, aroma rempah kuat, dan tekstur unik dari humbut (umbut kelapa muda). Rasanya gurih, sedikit asam, dan super comforting.</p>
@@ -184,7 +184,7 @@ const menuData = {
   },
 
   "ikan bakar sambal raja": {
-    img: "images/baung-bakar.jpg",
+    img: "images/raja.jpg",
     text: `
       <h2>Ikan Bakar Sambal Raja</h2>
       <p class="desc">Menu khas Kutai: ikan bakar gurih disiram sambal raja segar — perpaduan pedas, asam, dan wangi jeruk limau.</p>
@@ -235,7 +235,7 @@ const menuData = {
   },
 
   "ikan papuyu masak kuning": {
-    img: "images/ikan-patin-kuah.jpg",
+    img: "images/ikan-papuyu-masak-kuning.jpg",
     text: `
       <h2>Ikan Papuyu Masak Kuning</h2>
       <p class="desc">Menu rumahan khas Banjar dengan kuah kuning segar, aroma kunyit kuat. Ikan papuyu (betok) teksturnya padat dan gurih.</p>
@@ -259,7 +259,7 @@ const menuData = {
   },
 
   "pindang ikan banjar": {
-    img: "images/papuyu-goreng.jpg",
+    img: "images/pindang-ikan-banjar.jpg",
     text: `
       <h2>Pindang Ikan Banjar</h2>
       <p class="desc">Kuah kuning segar yang gurih, sedikit asam, dan kaya rempah. Ringan tapi nendang.</p>
@@ -284,7 +284,7 @@ const menuData = {
   },
 
   "ayam cincane": {
-    img: "images/saluang-goreng.jpg",
+    img: "images/ayam-cincane.jpg",
     text: `
       <h2>Ayam Cincane</h2>
       <p class="desc">Ikon kuliner Samarinda: warna merah menggoda, bumbu manis-gurih meresap, aroma bakaran yang kuat.</p>
@@ -308,7 +308,7 @@ const menuData = {
   },
 
   "ayam masak habang": {
-    img: "images/ayam-habang.jpg",
+    img: "images/ayam-masak-habang.jpg",
     text: `
       <h2>Ayam Masak Habang</h2>
       <p class="desc">Hidangan khas Banjar dengan warna merah pekat dari cabai kering. Manis, gurih, sedikit pedas.</p>
@@ -332,7 +332,7 @@ const menuData = {
   },
 
   "soto banjar": {
-    img: "images/soto-banjar.jpg",
+    img: "images/soto-banjar2.jpg",
     text: `
       <h2>Soto Banjar</h2>
       <p class="desc">Kuah bening kekuningan dengan aroma kayu manis dan cengkih yang khas. Disajikan dengan ayam suwir, ketupat, dan perkedel.</p>
@@ -357,7 +357,7 @@ const menuData = {
   },
 
   "kari ayam banjar": {
-    img: "images/nasi-sop-banjar.jpg",
+    img: "images/kari-ayam-banjar.jpg",
     text: `
       <h2>Kari Ayam Banjar</h2>
       <p class="desc">Kuah santan kuning yang gurih, wangi rempah, dan rasa hangat yang menempel di lidah.</p>
@@ -405,7 +405,7 @@ const menuData = {
   },
 
   "ayam kuah kuning": {
-    img: "images/sayur-umbut.jpg",
+    img: "images/ayam-kuah-kuning.jpg",
     text: `
       <h2>Ayam Kuah Kuning</h2>
       <p class="desc">Gurih hangat dengan aroma kunyit dan rempah yang ringan. Kuahnya segar tapi tetap kaya rasa.</p>
@@ -429,7 +429,7 @@ const menuData = {
   },
 
   "udang masak habang": {
-    img: "images/ayam-kuah-kuning.jpg",
+    img: "images/udang-masak-habang.jpg",
     text: `
       <h2>Udang Masak Habang</h2>
       <p class="desc">Versi seafood dari masakan habang khas Banjar. Merah pekat, manis gurih dengan rempah yang kuat.</p>
@@ -453,7 +453,7 @@ const menuData = {
   },
 
   "udang galah bakar": {
-    img: "images/gangan-patin.jpg",
+    img: "images/udang-galah-bakar.jpg",
     text: `
       <h2>Udang Galah Bakar</h2>
       <p class="desc">Daging tebal, manis alami, makin mantap dibakar dengan bumbu gurih manis dan lelehan mentega.</p>
@@ -475,7 +475,7 @@ const menuData = {
   },
 
   "kepiting soka": {
-    img: "images/sayur-asam-banjar.jpg",
+    img: "images/kepiting-soka.jpg",
     text: `
       <h2>Kepiting Soka</h2>
       <p class="desc">Kepiting bercangkang lunak yang bisa dimakan semuanya. Crispy di luar, lembut di dalam.</p>
@@ -499,7 +499,7 @@ const menuData = {
   },
 
   "cumi masak hitam": {
-    img: "images/gangan-asam.jpg",
+    img: "images/cumi-masak-hitam.jpg",
     text: `
       <h2>Cumi Masak Hitam</h2>
       <p class="desc">Kuah gelap khas dari tinta cumi, gurih, sedikit pedas, aromatik. Paling nikmat dengan nasi hangat.</p>
@@ -523,7 +523,7 @@ const menuData = {
   },
 
   "udang santan kuning": {
-    img: "images/sayur-santan-banjar.jpg",
+    img: "images/udang-kuah-santan-kuning.jpg",
     text: `
       <h2>Udang Santan Kuning</h2>
       <p class="desc">Berkuah santan kuning dari kunyit. Gurih, lembut, sedikit pedas, dan aromatik.</p>
@@ -547,7 +547,7 @@ const menuData = {
   },
 
   "nasi bekepor": {
-    img: "images/uduk-banjar.jpg",
+    img: "images/nasi-bekepor.jpg",
     text: `
       <h2>Nasi Bekepor</h2>
       <p class="desc">Nasi tradisional khas Kutai dimasak bersama rempah, santan, dan ikan asin. Gurih, harum, kaya bumbu.</p>
@@ -596,7 +596,7 @@ const menuData = {
   },
 
   "nasi subut": {
-    img: "images/gangan-waluh.jpg",
+    img: "images/nasi-subut.jpg",
     text: `
       <h2>Nasi Subut</h2>
       <p class="desc">Makanan tradisional Kalimantan Timur: campuran beras, jagung, dan ubi jalar. Gurih dan sedikit manis alami.</p>
@@ -668,7 +668,7 @@ const menuData = {
   },
 
   "ketupat kandangan set": {
-    img: "images/ketupat-lauk.jpg",
+    img: "images/ketupat-kandangan-set.jpg",
     text: `
       <h2>Ketupat Kandangan (Set Lengkap)</h2>
       <p class="desc">Ketupat dengan ikan gabus asap dan kuah santan gurih. Kaya rempah, sedikit smoky, nikmat dimakan hangat.</p>

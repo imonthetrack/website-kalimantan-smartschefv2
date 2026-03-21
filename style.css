@@ -908,3 +908,150 @@ body::before {
 .scanner-layout {
   align-items: stretch;
 }
+
+/* OVERLAY (lebih smooth & modern) */
+.intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0,0,0,0.6); /* sedikit lebih ringan */
+  backdrop-filter: blur(8px);  /* ditingkatkan */
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+/* BOX UTAMA (upgrade halus, bukan ganti total) */
+.intro-box {
+  width: 90%;
+  max-width: 400px;
+
+  background: #1e1e1e;
+  border-radius: 18px;
+  overflow: hidden;
+
+  color: white;
+
+  /* 🔥 upgrade disini */
+  box-shadow: 0 25px 70px rgba(0,0,0,0.7);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* SLIDER (tidak diubah) */
+.intro-slider {
+  display: flex;
+  transition: transform 0.45s ease;
+}
+
+/* SLIDE (tetap sama, cuma dipoles) */
+.intro-slide {
+  min-width: 100%;
+  padding: 22px;
+  text-align: center;
+
+  background: #1e1e1e;
+  color: #eaeaea;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+
+  /* 🔥 tambahan subtle biar ga flat */
+  transition: all 0.3s ease;
+}
+
+/* GAMBAR */
+.intro-slide img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+
+  border-radius: 12px;
+  opacity: 0.95;
+
+  /* 🔥 depth biar ga nempel */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* JUDUL */
+.intro-slide h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+
+  color: #ff8c42;
+
+  /* 🔥 biar lebih hidup */
+  letter-spacing: 0.3px;
+}
+
+/* DESKRIPSI */
+.intro-slide p {
+  font-size: 0.9rem;
+  color: #bbb;
+  line-height: 1.5;
+
+  /* 🔥 lebih rapi dibaca */
+  max-width: 260px;
+}
+
+/* NAV BUTTON (tidak diubah posisi, hanya style) */
+.intro-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+}
+
+/* DOT */
+.intro-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px;
+}
+
+.intro-dots span {
+  width: 7px;
+  height: 7px;
+  background: #444;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.intro-dots .active {
+  background: #00c896;
+  transform: scale(1.4); /* sedikit lebih jelas */
+}
+
+/* FLOAT BUTTON (HELP) */
+.intro-float-btn {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+
+  background: #00c896;
+  color: white;
+
+  font-size: 22px;
+  cursor: pointer;
+
+  z-index: 9999;
+
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+  transition: 0.25s;
+}
+
+/* HOVER EFFECT */
+.intro-float-btn:hover {
+  transform: scale(1.1);
+}

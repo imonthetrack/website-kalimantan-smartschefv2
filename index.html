@@ -197,6 +197,61 @@
   <!-- Init Lucide icons -->
   <script>lucide.createIcons();</script>
 
+  <!-- ================= POPUP INTRO ================= -->
+<div id="introPopup" class="intro-overlay" style="display:none;">
+  <div class="intro-box">
+
+    <div class="intro-slider" id="introSlider">
+
+      <div class="intro-slide active">
+        <img src="images/slide1.jpg">
+        <h2>Selamat Datang 👋</h2>
+        <p>SmartChef AI membantu mengenali masakan khas Kalimantan.</p>
+      </div>
+
+      <div class="intro-slide">
+        <img src="images/slide2.jpg">
+        <h2>Cara Pakai 📷</h2>
+        <p>Gunakan kamera atau upload gambar makanan/bahan.</p>
+      </div>
+
+      <div class="intro-slide">
+        <img src="images/slide3.jpg">
+        <h2>Cara Kerja AI 🧠</h2>
+        <p>AI hanya mengenali 25 bahan ikonik.</p>
+      </div>
+
+      <div class="intro-slide">
+        <img src="images/slide4.jpg">
+        <h2>Tips 🔥</h2>
+        <p>Gunakan bahan khas seperti rebung, haruan, cabai habang.</p>
+      </div>
+
+      <div class="intro-slide">
+        <img src="images/slide5.jpg">
+        <h2>Siap Digunakan 🚀</h2>
+        <p>Mulai sekarang!</p>
+
+        <button id="acceptIntro" class="btn btn-primary">
+          Mulai
+        </button>
+      </div>
+
+    </div>
+
+    <div class="intro-nav">
+      <button id="prevSlide" class="btn btn-ghost">Back</button>
+      <button id="nextSlide" class="btn btn-primary">Next</button>
+    </div>
+
+    <div class="intro-dots" id="introDots"></div>
+
+  </div>
+</div>
+
+<button id="openIntroBtn" class="intro-float-btn">?</button>
+
+
   <!-- App script -->
   <script src="script.js"></script>
 

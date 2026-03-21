@@ -1210,3 +1210,93 @@ document.getElementById("bahanBtn").addEventListener("click", () => {
     bahanVisible = false;
   }
 });
+
+window.addEventListener("DOMContentLoaded", () => {
+
+  const slider = document.getElementById("introSlider");
+  const popup = document.getElementById("introPopup");
+  const dotsContainer = document.getElementById("introDots");
+
+  const nextBtn = document.getElementById("nextSlide");
+  const prevBtn = document.getElementById("prevSlide");
+  const acceptBtn = document.getElementById("acceptIntro");
+  const openBtn = document.getElementById("openIntroBtn");
+
+  if (!slider) return; // cegah error
+
+  let currentIndex = 0;
+  const slides = document.querySelectorAll(".intro-slide");
+  const totalSlides = slides.length;
+
+  // DOTS
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement("span");
+    if (i === 0) dot.classList.add("active");
+    dotsContainer.appendChild(dot);
+  }
+
+  function updateSlider() {
+    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+    const dots = dotsContainer.querySelectorAll("span");
+    dots.forEach(d => d.classList.remove("active"));
+    dots[currentIndex].classList.add("active");
+  }
+
+  // NEXT
+  nextBtn.onclick = () => {
+    if (currentIndex < totalSlides - 1) {
+      currentIndex++;
+      updateSlider();
+    } else {
+      popup.style.display = "none";
+      localStorage.setItem("introShown", "true");
+    }
+  };
+
+  // PREV
+  prevBtn.onclick = () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSlider();
+    }
+  };
+
+  // ACCEPT
+  acceptBtn.onclick = () => {
+    popup.style.display = "none";
+    localStorage.setItem("introShown", "true");
+  };
+
+  // BUKA LAGI
+  openBtn.onclick = () => {
+    popup.style.display = "flex";
+    currentIndex = 0;
+    updateSlider();
+  };
+
+  // SWIPE
+  let startX = 0;
+
+  slider.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+  });
+
+  slider.addEventListener("touchend", e => {
+    let endX = e.changedTouches[0].clientX;
+
+    if (startX - endX > 50 && currentIndex < totalSlides - 1) {
+      currentIndex++;
+    } else if (endX - startX > 50 && currentIndex > 0) {
+      currentIndex--;
+    }
+
+    updateSlider();
+  });
+
+  // AUTO SHOW
+  if (!localStorage.getItem("introShown")) {
+    popup.style.display = "flex";
+  }
+
+});
